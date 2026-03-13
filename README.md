@@ -16,15 +16,7 @@ Instructions
       * Node.js: npm install typescript @types/react @types/react-native @types/node --save-dev
    4. Testing: Define a Vibe Bank in the Prober class to test the Reinforcement Learning loop:
    
-   def __init__(self):
-       self.vibe_bank = [
-           "A dark mode login screen with email/password fields and transparent background",
-           "A profile card with an avatar, name and Follow Button",
-           "A search bar that shows a 'No results' text when typed in",
-           "A counter component with big '+' and '-' buttons",
-           "A toggle switch that changes background color"
-       ]
-   
+  ![alt text](image-1.png)
    
 System in Action (Terminal Logs)
 Challenge: "A profile card with an avatar, name and Follow Button"
