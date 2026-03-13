@@ -27,7 +27,7 @@ Challenge: "A profile card with an avatar, name and Follow Button"
 
 [Attempt 2] : Healing... (Injected Fix)
 [Success!!] Code is functional and usable!
-
+![alt text](image-2.png)
 Why RL-RAG?
 
 * Feedback Loop (RL): While human-in-the-loop feedback is common, building an RL reward system based on compilation success allows agents to "practice" building native apps without human supervision.
