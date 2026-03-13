@@ -1,5 +1,6 @@
-Bloom RL-RAG: Self-Healing Code Retrieval Layer
-This project is a prototype designed to bridge the gap between static Retrieval-Augmented Generation (RAG) and functional code generation for AI-native application builders.
+## Bloom RL-RAG: Self-Healing Code Retrieval Layer
+
+-- This project is a prototype designed to bridge the gap between static Retrieval-Augmented Generation (RAG) and functional code generation for AI-native application builders.
 Technical Stack
 
 * Orchestrator: Python 3.10
