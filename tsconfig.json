@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "CommonJS",
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node", "react", "react-native"],
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["sandbox_test.tsx"],
+  "exclude": ["node_modules"]
+}
