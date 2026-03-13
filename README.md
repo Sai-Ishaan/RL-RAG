@@ -19,7 +19,7 @@ Technical Stack
    
   ![alt text](image-1.png)
    
-System in Action (Terminal Logs)
+## Output: System in Action (Terminal Logs)
 Challenge: "A profile card with an avatar, name and Follow Button"
 
 [Attempt 1] : Evaluating code...
@@ -34,7 +34,7 @@ Why RL-RAG?
 * Feedback Loop (RL): While human-in-the-loop feedback is common, building an RL reward system based on compilation success allows agents to "practice" building native apps without human supervision.
 * Synthetic Data Strategy: This solves the "Cold Start" problem where new library versions take time to appear in real-world training sets. The system generates synthetic apps using new libraries to train the agent autonomously.
 
-How the Self-Healing Loop Works
+## _How the Self-Healing Loop Works_ ???
 The system operates as a three-stage factory:
 
    1. The Architect (Agentic RAG): The user provides a "vibe" or feature request. The agent pulls relevant patterns from the vector store and documentation.
@@ -43,14 +43,14 @@ The system operates as a three-stage factory:
    * Success: The code is tagged as "Verified."
       * Failure: The error log is sent to a Refiner LLM. The fix is stored as a new synthetic example, while the failing snippet receives a negative reward.
    
-Current Benchmarks
+## Current Benchmarks
 Tested using Qwen-2.5-Coder (Local) and TypeScript 5.x:
 
 * First-Pass Success Rate: 60% (3/5 Challenges)
 * Recovery Rate: High success in resolving syntax and import hallucinations.
 * Identified Edge Cases: Complex conditional rendering (e.g., Search Bar logic) requires higher-reasoning models or expanded RAG context.
 
-Roadmap and Next Steps
+## Roadmap and Next Steps
 
 * Vector Store Integration: Transitioning from local mocks to a live Pinecone/Weaviate index for verified snippets.
 * Linter Integration: Adding ESLint for code-style enforcement during the Quality Control stage.
