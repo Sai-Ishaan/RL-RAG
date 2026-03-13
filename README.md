@@ -8,7 +8,7 @@ Technical Stack
 * Judge: Node.js + 'tsc' (TypeScript Compiler)
 * Target Stack: React Native / Expo
 
-Instructions
+### Instructions
 
    1. Environment: Set up your virtual environment using python -m venv venv and activate it.
    2. Inference: Open a separate terminal and run ollama run llama3 (or preferred coder model).
