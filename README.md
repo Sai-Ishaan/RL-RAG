@@ -69,7 +69,7 @@ $$R = \text{Base} - (\text{Complexity} \times 0.02) - (\text{Linter Penalty})$$
 [Success!!] Code is functional and usable!
 ![alt text](image-4.png)
 ![alt text](image-5.png)
-
+```
 ## Current Benchmarks
 
 Tested using Qwen-2.5-Coder (Local) and TypeScript 5.x:
