@@ -1,44 +1,13 @@
-Bloom RL-RAG: Self-Healing Code Retrieval Layer
-This project is a prototype designed to bridge the gap between static Retrieval-Augmented Generation (RAG) and functional code generation for AI-native application builders.
+## Bloom RL-RAG: Self-Healing Code Retrieval Layer
 
-Why RL-RAG?
-
-* Feedback Loop (RL): While human-in-the-loop feedback is common, building an RL reward system based on compilation success allows agents to "practice" building native apps without human supervision.
-* Synthetic Data Strategy: This solves the "Cold Start" problem where new library versions take time to appear in real-world training sets. The system generates synthetic apps using new libraries to train the agent autonomously.
-
+-- This project is a prototype designed to bridge the gap between static Retrieval-Augmented Generation (RAG) and functional code generation for AI-native application builders.
 Technical Stack
 * Orchestrator: Python 3.10
 * The Brain: Ollama (Local LLM Interface)
 * Judge: Node.js + 'tsc' (TypeScript Compiler)
 * Target Stack: React Native / Expo
-* Memory: Custom Jaccard-based Semantic JSON Store(A lightweight Vector DB)
 
-### Self Healing Life-Cycle:
-- This system operates as a recursive factory, using 4 specialsed agents serving different purposes:
-   *The Architect: Transforms a users need or "vibe" into a JSON blueprint. It estimates complexity and defines the component tree (For example App-> LoginScreen -> ActionButton)
-
-   *The Builder: Generates tsx code using RAG(Retrieval-Augmented Generation) by pulling verified snippets from memory to ensure correct patterns and imports
-
-   *The Project Manager: A headless sandbox handler. It symlinks node_modules from a 'template' into a project_sandbox directory to provide a real-world compilation environment
-
-   *The Healer: This acts as the RL-Correction layer. It injects the error logs back into the model with "Strict React-Native-Only" guard-rails to fix AI-hallucinations
-
-### Reward Logic
-    A Composite Reward Score(R) was implemented to provide a Dense-Reward signal, allowing the model to understand WHY a snippet is better compared to another. This is calculated as follows:
-
-        R = Base - (Complexity x 0.02) - (Linter Penalty)
-   I) Complexity and Brevity Penalty:
-   Logic: Inspired by metrics such as BLEU, SacreBLEU and ChrF, Ths metric prevents "Reward Hacking" where the model will over-engineer code or try to 'fool' in order to pass the test.
-
-   Impact: This encourages more Efficient React-Code path. If the Architect plans to build a simple component but Builder generates a complex code, the reward 'drops'.
-
-   II) Linter and Type Integration(Dense Feedback):
-
-   a) Minor Issues(-0.05): Warnings that doesn't break the app but lower maintainability
-   b) Critical Issues(-0.1): High-severity cases that prevents compilation. (Eg:- TS2307: Module Not Found)
-   
-
-## Instructions
+### Instructions
 
    1. Environment: Set up your virtual environment using python -m venv venv and activate it.
    2. Inference: Open a separate terminal and run ollama run llama3 (or preferred coder model).
@@ -55,7 +24,8 @@ Technical Stack
 
   ![alt text](image-1.png)
    
-System in Action (Terminal Logs)
+## Output: System in Action (Terminal Logs)
+Challenge: "A profile card with an avatar, name and Follow Button"
 
 [Attempt 1] : Evaluating code...
 [Failure]: Reward Score 0.0. 
@@ -64,16 +34,29 @@ System in Action (Terminal Logs)
 [Attempt 2] : Healing... (Injected Fix)
 [Success!!] Code is functional and usable!
 ![alt text](image-2.png)
-![alt text](image-3.png)
+Why RL-RAG?
 
-Current Benchmarks
+* Feedback Loop (RL): While human-in-the-loop feedback is common, building an RL reward system based on compilation success allows agents to "practice" building native apps without human supervision.
+* Synthetic Data Strategy: This solves the "Cold Start" problem where new library versions take time to appear in real-world training sets. The system generates synthetic apps using new libraries to train the agent autonomously.
+
+## _How the Self-Healing Loop Works_ ???
+The system operates as a three-stage factory:
+
+   1. The Architect (Agentic RAG): The user provides a "vibe" or feature request. The agent pulls relevant patterns from the vector store and documentation.
+   2. Quality Control: Before the code is displayed, it is sent to a sandbox where the TypeScript compiler acts as a linter/validator.
+   3. Learning (RL Reward System):
+   * Success: The code is tagged as "Verified."
+      * Failure: The error log is sent to a Refiner LLM. The fix is stored as a new synthetic example, while the failing snippet receives a negative reward.
+   
+## Current Benchmarks
 Tested using Qwen-2.5-Coder (Local) and TypeScript 5.x:
 Metric	Result
 First-Pass Success Rate	60% (3/5 Challenges)
 Self-Correction Rate	~90% (Recovers in < 2 attempts)
 Average Reward	0.85 - 0.92 for Verified solutions
 
-Roadmap and Next Steps
+## Roadmap and Next Steps
+
+* Vector Store Integration: Transitioning from local mocks to a live Pinecone/Weaviate index for verified snippets.
+* Linter Integration: Adding ESLint for code-style enforcement during the Quality Control stage.
 * Synthetic Dataset Expansion: Automating the Prober to generate 1,000+ app scenarios for pre-training the Agentic RAG layer.
-
-
