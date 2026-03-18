@@ -14,3 +14,6 @@ temp_component.tsx
 *.d.ts
 *.js.map
 verified_components.json
+project_sandbox/
+rn_template/
+memory/
