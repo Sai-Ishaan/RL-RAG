@@ -8,6 +8,10 @@ from prober import Prober
 import json
 from project_manager import ProjectManager
 from vector_store import VectorStore
+import os
+import random
+from datetime import datetime
+from prober import inject_code
 
 class RLOrchestrator:
     def __init__(self):
@@ -85,56 +89,6 @@ class RLOrchestrator:
         print("Max retries reached. Episode Failed!")
         self.save_experience(vibe, plan, generated_code_map, reward, "FAILED")
         return reward
-    # def run_rl_orchestrator(self, vibe, max_retries=3):
-    #     print(f"\n New vibe: {vibe} \n")
-    #     plan = self.architect.plan_architecture(vibe)
-    #     if not plan or "error" in plan or "components" not in plan:
-    #         print("Plan Generation Failed!!")
-    #         return 0.0
-
-    #     #self.pm.setup_project() ##Not implemented, but would create tsconfig, package.json etc.
-    #     generated_files = {}
-    #     for comp in plan['components']:
-    #         print(f"Building: {comp['name']}....")
-    #         ##context = ""
-
-    #         raw_code = self.builder.generate_component(comp['description'], context_snippets="")
-    #         clean_code = self.healer.clean_code(raw_code)
-
-    #         self.pm.write_component(comp['name'], clean_code)
-    #         generated_files[comp['name']] = clean_code
-    #     attempt = 1 #Global Evaluation + Healing
-    #     reward = 0.0
-
-    #     while attempt <= max_retries:
-    #         print(f"Attempt{attempt}: Global Validation...")
-    #         success, logs = self.pm.run_validation()
-
-    #         reward = self.calculate_composite_reward(success, logs, plan)
-
-    #         if success and reward > 0.7:
-    #             print(f"Success! Reward: {reward}")
-    #             self.save_experience(vibe, plan, reward, "VERIFIED")
-    #             return reward
-    #         print(f" Reward: {reward}. Scanning logs for healing targets...")
-
-    #         files_healed_this_turn = 0 #A check variable that acknowledges any global error than just staying silent
-    #         for comp_name in generated_files:
-    #             if comp_name.lower() in logs.lower():
-    #                 print(f"Healing {comp_name}...")
-    #                 fixed_code = self.healer.heal(generated_files[comp_name], logs)
-    #                 self.pm.write_component(comp_name, fixed_code)
-    #                 generated_files[comp_name] = fixed_code
-    #                 files_healed_this_turn += 1
-            
-    #         if files_healed_this_turn == 0:
-    #             print("❗ No specific components identified in logs. Attempting general fix...")
-            
-    #         attempt += 1
-    #     print("Max retries reached! Experience marked as FAILED!")
-    #     self.save_experience(vibe, plan, reward, "FAILED")
-    #     return reward
-
     def save_experience(self, vibe, plan, code_map, reward, status):
         experience = {
             "vibe": vibe,
