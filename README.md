@@ -83,3 +83,4 @@ Tested using Qwen-2.5-Coder (Local) and TypeScript 5.x:
 ## Roadmap and Next Steps
 
 * **Synthetic Dataset Expansion:** Automating the Prober to generate 1,000+ app scenarios for pre-training the Agentic RAG layer.
+* **Adding an Open-Source Fine-Tuning Framework:** Adding a fine tune framework to the pipeline to speedup Fine-Tuning and Training.
