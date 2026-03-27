@@ -70,6 +70,10 @@ $$R = \text{Base} - (\text{Complexity} \times 0.02) - (\text{Linter Penalty})$$
 ![alt text](image-4.png)
 ![alt text](image-5.png)
 ```
+## Updates
+ Prober has been modified to inject code directly unto the generated app components as required. 
+ Main loop has been updated to handle more than a 100 different permutations of components, style and constraint prompts for the Synthetic Data Generation, along with an assembly sandbox.
+ 
 ## Current Benchmarks
 
 Tested using Qwen-2.5-Coder (Local) and TypeScript 5.x:
@@ -82,5 +86,5 @@ Tested using Qwen-2.5-Coder (Local) and TypeScript 5.x:
 
 ## Roadmap and Next Steps
 
-* **Synthetic Dataset Expansion:** Automating the Prober to generate 1,000+ app scenarios for pre-training the Agentic RAG layer.
-* **Adding an Open-Source Fine-Tuning Framework:** Adding a fine tune framework to the pipeline to speedup Fine-Tuning and Training.
+* **Synthetic Dataset Expansion(ContD):** Automating the Prober to generate 1,000+ app scenarios for pre-training the Agentic RAG layer.
+* **Adding Hybrid Assembly Engine:** Adding a High-Speed Data Gen framework for lesser GPUs to achieve zero import errors
