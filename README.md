@@ -55,6 +55,7 @@ $$R = \text{Base} - (\text{Complexity} \times 0.02) - (\text{Linter Penalty})$$
     npm init -y
     npm install react react-native typescript @types/react @types/react-native
     ```
+    **Note**: Make sure to refer to the Synthetic Data-Expansion branch for more updated logic in the pipeline
 5. **Testing:** Define a Vibe Bank in the `Prober` class to test the **Reinforcement Learning** loop.
 6. **Run:** `python main_loop.py`
 
