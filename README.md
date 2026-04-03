@@ -111,4 +111,4 @@ Tested using **Qwen-2.5-Coder** (Local) and **TypeScript 5.x**:
 
 ---
 
-**Built for the AI-native future. Contribute, experiment, and help shape autonomous code generation.** 🚀
+**Built for the AI-native future. Contribute, experiment, and help shape autonomous code generation.** 
