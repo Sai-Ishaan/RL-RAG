@@ -1,15 +1,12 @@
-# 🤖 RL-RAG: Self-Healing Code Retrieval Layer
+#  RL-RAG: Self-Healing Code Retrieval Layer
+This project is a prototype designed to bridge the gap between static **Retrieval-Augmented Generation (RAG)** and functional code generation for **AI-native application builders**. Experience autonomous code healing through intelligent reward mechanisms.
 
-> **AI-powered code generation with reinforcement learning feedback loops** | Bridging **RAG**, **LLMs**, and **React Native** development
-
-This project is a revolutionary prototype designed to bridge the gap between static **Retrieval-Augmented Generation (RAG)** and functional code generation for **AI-native application builders**. Experience autonomous code healing through intelligent reward mechanisms.
-
-## 🎯 Why RL-RAG?
+##  Why RL-RAG?
 
 * **Feedback Loop (RL):** While human-in-the-loop feedback is common, building an **RL reward system** based on compilation success allows agents to "practice" building native apps without human supervision. Say goodbye to manual debugging!
 * **Synthetic Data Strategy:** This solves the **"Cold Start" problem** where new library versions take time to appear in real-world training sets. The system generates **synthetic apps** using new libraries to train the agent autonomously—perfect for **library version updates** and **rapid prototyping**.
 
-## 🏗️ Technical Stack
+## Technical Stack
 
 * **Orchestrator:** Python 3.10
 * **The Brain:** Ollama (Local LLM Interface) | Support for Llama3, Qwen-2.5-Coder, and more
@@ -17,7 +14,7 @@ This project is a revolutionary prototype designed to bridge the gap between sta
 * **Target Stack:** **React Native** / **Expo** (iOS & Android)
 * **Memory:** Custom **Jaccard-based Semantic JSON Store** (Lightweight Vector DB)
 
-### 🔄 Self-Healing Life-Cycle
+### Self-Healing Life-Cycle
 
 This system operates as a **recursive factory**, using **4 specialized agents** serving different purposes:
 
@@ -26,7 +23,7 @@ This system operates as a **recursive factory**, using **4 specialized agents** 
 * **The Project Manager:** A headless **sandbox handler**. It symlinks `node_modules` from a 'template' into a `project_sandbox` directory to provide a real-world compilation environment.
 * **The Healer:** This acts as the **RL-Correction layer**. It injects error logs back into the model with **"Strict React-Native-Only" guard-rails** to fix **AI-hallucinations** and compilation errors.
 
-### 🎁 Reward Logic & Dense Feedback
+### Reward Logic & Dense Feedback
 
 A **Composite Reward Score** ($R$) was implemented to provide a **Dense-Reward signal**, allowing the model to understand why a snippet is better compared to another. This is calculated as follows:
 
@@ -42,7 +39,7 @@ $$R = \text{Base} - (\text{Complexity} \times 0.02) - (\text{Linter Penalty})$$
 
 ---
 
-## 🚀 Instructions
+## Instructions
 
 1. **Environment:** Set up your virtual environment using `python -m venv venv` and activate it.
 2. **Inference:** Open a separate terminal and run `ollama run llama3` (or preferred coder model).
@@ -61,7 +58,7 @@ $$R = \text{Base} - (\text{Complexity} \times 0.02) - (\text{Linter Penalty})$$
 
 ![System Architecture](image-1.png)
 
-## ⚙️ System in Action (Terminal Logs)
+## System in Action (Terminal Logs)
 
 ```text
 [Attempt 1] : Evaluating code...
@@ -75,13 +72,13 @@ $$R = \text{Base} - (\text{Complexity} \times 0.02) - (\text{Linter Penalty})$$
 ![Self-Healing Demo 1](image-4.png)
 ![Self-Healing Demo 2](image-5.png)
 
-## 📝 Recent Updates
+##  Recent Updates
 
 * ✅ **Prober Enhanced:** Modified to inject code directly unto generated app components as required.
 * ✅ **Main Loop Upgraded:** Now handles **100+ permutations** of components, styles, and constraint prompts for **Synthetic Data Generation**, along with assembly sandbox capabilities.
 * ✅ **Branch:** `Synthetic-Data-Expansion` - Focus on autonomous dataset generation for pre-training.
 
-## 📊 Current Benchmarks
+##  Current Benchmarks
 
 Tested using **Qwen-2.5-Coder** (Local) and **TypeScript 5.x**:
 
@@ -91,7 +88,7 @@ Tested using **Qwen-2.5-Coder** (Local) and **TypeScript 5.x**:
 | **Self-Correction Rate** | ~90% (Recovers in < 2 attempts) | Efficient error recovery via RL feedback |
 | **Average Reward** | 0.85 - 0.92 for Verified solutions | Consistent, production-ready code |
 
-## 🗺️ Roadmap and Next Steps
+## Roadmap and Next Steps
 
 * **Synthetic Dataset Expansion (In Progress):** Automating the Prober to generate **1,000+ app scenarios** for pre-training the **Agentic RAG layer**.
 * **Hybrid Assembly Engine:** Adding a **High-Speed Data Gen framework** optimized for **low-GPU environments** to achieve **zero import errors**.
@@ -100,7 +97,7 @@ Tested using **Qwen-2.5-Coder** (Local) and **TypeScript 5.x**:
 
 ---
 
-## 🔑 Key Technologies & Keywords
+## Key Technologies & Keywords
 
 **AI/ML:** Reinforcement Learning (RL) | Retrieval-Augmented Generation (RAG) | Large Language Models (LLMs) | Agentic AI
 
@@ -111,5 +108,3 @@ Tested using **Qwen-2.5-Coder** (Local) and **TypeScript 5.x**:
 **DevOps:** Sandbox Environment | Compilation Success | Self-Healing | Code Correction
 
 ---
-
-**Built for the AI-native future. Contribute, experiment, and help shape autonomous code generation.** 
